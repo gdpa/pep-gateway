@@ -11,7 +11,7 @@ Create pep-certificate.xml in your root directory and provide your private key p
 In your classes you can use package this way:
 
 ```PHP 
-use gdpa\PepGateway;
+use gdpa\PepGateway\PepGateway;
 class payment
 {
     protected $merchantCode; // Your merchand code
