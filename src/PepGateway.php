@@ -37,7 +37,17 @@ class PepGateway
     {
         $action = $this->gatewayUrl;
         $sign = base64_encode($this->sign($invoiceNumber, $invoiceDate, $amount, $redirectAddress, $timestamp, $this->buyAction));
-        return compact($action, $sign, $this->merchantCode, $this->terminalCode, $invoiceNumber, $invoiceDate, $amount, $redirectAddress, $timestamp);
+        return [
+            'action' => $action,
+            'sign' => $sign,
+            'merchantCode' => $this->merchantCode,
+            'terminalCode' => $this->terminalCode,
+            'invoiceNumber' => $invoiceNumber,
+            'invoiceDate' => $invoiceDate,
+            'amount' => $amount,
+            'redirectAddress' => $redirectAddress,
+            'timestamp' => $timestamp
+        ];
     }
 
     /**
