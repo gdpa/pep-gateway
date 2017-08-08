@@ -16,29 +16,30 @@ class payment
 {
     protected $merchantCode; // Your merchand code
     protected $terminalCode; // Your terminal code
+    protected $certificate; // Path to certificate xml
     
     public function buySomething()
     {
-        $gateway = new PepGateway($this->merchantCode, $this->terminalCode);
+        $gateway = new PepGateway($this->merchantCode, $this->terminalCode, $this->certificate);
         $buyHiddenFields = $gateway->buy($invoiceNumber, $invoiceDate, $amount, $redirectAddress, $timestamp);
         ...
     }
     
     public function verifyPurchase()
     {
-        $gateway = new PepGateway($this->merchantCode, $this->terminalCode);
+        $gateway = new PepGateway($this->merchantCode, $this->terminalCode, $this->certificate);
         $verify = $gateway->verify($invoiceNumber, $invoiceDate, $amount, $timestamp);
     }
     
     public function refundTransaction()
     {
-        $gateway = new PepGateway($this->merchantCode, $this->terminalCode);
+        $gateway = new PepGateway($this->merchantCode, $this->terminalCode, $this->certificate);
         $refund = $gateway->refund($invoiceNumber, $invoiceDate, $amount, $timestamp);
     }
     
     public function check()
     {
-        $gateway = new PepGateway($this->merchantCode, $this->terminalCode);
+        $gateway = new PepGateway($this->merchantCode, $this->terminalCode, $this->certificate);
         $check = $gateway->check($invoiceNumber, $invoiceDate);
     }
 }

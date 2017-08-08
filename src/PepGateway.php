@@ -18,11 +18,11 @@ class PepGateway
     protected $verifyUrl = 'https://pep.shaparak.ir/VerifyPayment.aspx';
     protected $refundUrl = 'https://pep.shaparak.ir/doRefund.aspx';
 
-    public function __construct($merchantCode, $terminalCode)
+    public function __construct($merchantCode, $terminalCode, $certificate)
     {
         $this->merchantCode = $merchantCode;
         $this->terminalCode = $terminalCode;
-        $this->processor = new RSAProcessor("./pep-certificate.xml",RSAKeyType::XMLFile);
+        $this->processor = new RSAProcessor($certificate,RSAKeyType::XMLFile);
     }
 
     /**
