@@ -4,7 +4,7 @@ This package is base on PEP company sample code [(pep-phpsample(v3.3.3).rar)](ht
 For more information you can see their documentation at [pep.co.ir](https://www.pep.co.ir/ipg/).    
 ## Usage
 
-`$ composer require gdpa/PepGateway`
+`$ composer require gdpa/pep-gateway`
 
 Create pep-certificate.xml in your root directory and provide your private key provided by PEP company in it.
 
