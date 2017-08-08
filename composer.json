@@ -1,5 +1,5 @@
 {
-    "name": "gdpa/PepGateway",
+    "name": "gdpa/pep-gateway",
     "description": "PEP IPG code for using in PHP projects.",
     "license": "MIT",
     "keywords": ["PepGateway"],
