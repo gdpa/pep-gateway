@@ -107,15 +107,8 @@ class PepGateway
     {
         $redirectAddress = $redirectAddress ? '#' . $redirectAddress : '';
         $action = $action ? '#' . $action : '';
+        $str = "#". $this->merchantCode . "#" . $this->terminalCode . "#" . $invoiceNumber . "#" . $invoiceDate . "#" . $amount . $redirectAddress . $action . "#" . $timestamp . "#";
 
-        return $this->processor->sign("#". $this->merchantCode
-            . "#" . $this->terminalCode
-            . "#" . $invoiceNumber
-            . "#" . $invoiceDate
-            . "#" . $amount
-            . $redirectAddress
-            . $action
-            . "#" . $timestamp
-            . "#");
+        return $this->processor->sign(sha1($str, true));
     }
 }
