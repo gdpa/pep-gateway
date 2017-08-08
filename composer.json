@@ -19,5 +19,6 @@
         "psr-4": {
             "gdpa\\PepGateway\\": "src"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
