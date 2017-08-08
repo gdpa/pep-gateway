@@ -45,7 +45,8 @@ class payment
 }
 ```  
 * `$buyHiddenFields` is contain all necessary fields for using in sending user to gateway:
-    * action (_Using in form action_)
+    * formAction (_Using in form action_) 
+    * action
     * merchantCode
     * terminalCode
     * invoiceNumber

@@ -35,10 +35,10 @@ class PepGateway
      */
     public function buy($invoiceNumber, $invoiceDate, $amount, $redirectAddress, $timestamp)
     {
-        $action = $this->gatewayUrl;
         $sign = base64_encode($this->sign($invoiceNumber, $invoiceDate, $amount, $redirectAddress, $timestamp, $this->buyAction));
         return [
-            'action' => $action,
+            'formAction' => $this->gatewayUrl,
+            'action' => $this->buyAction,
             'sign' => $sign,
             'merchantCode' => $this->merchantCode,
             'terminalCode' => $this->terminalCode,
