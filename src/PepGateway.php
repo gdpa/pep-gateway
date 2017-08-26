@@ -87,9 +87,9 @@ class PepGateway
      * @return array
      * @internal param $invoiceUID
      */
-    public function check($invoiceNumber, $invoiceDate)
+    public function check($TransactionReferenceID, $invoiceNumber, $invoiceDate)
     {
-        $fields = compact($invoiceNumber, $invoiceDate, $this->merchantCode, $this->terminalCode);
+        $fields = ['TransactionReferenceID' => $TransactionReferenceID, 'invoiceNumber' => $invoiceNumber, 'invoiceDate' => $invoiceDate, 'merchantCode' => $this->merchantCode, 'terminalCode' => $this->terminalCode];
         $result = Parser::post2https($fields, $this->checkURL);
         return Parser::makeXMLTree($result);
     }
@@ -112,3 +112,4 @@ class PepGateway
         return $this->processor->sign(sha1($str, true));
     }
 }
+
