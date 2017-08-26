@@ -40,7 +40,7 @@ class payment
     public function check()
     {
         $gateway = new PepGateway($this->merchantCode, $this->terminalCode, $this->certificate);
-        $check = $gateway->check($invoiceNumber, $invoiceDate);
+        $check = $gateway->check($transactionReferenceID, $invoiceNumber, $invoiceDate);
     }
 }
 ```  
