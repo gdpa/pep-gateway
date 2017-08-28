@@ -17,6 +17,7 @@ class PepGateway
     protected $checkURL = 'https://pep.shaparak.ir/CheckTransactionResult.aspx';
     protected $verifyUrl = 'https://pep.shaparak.ir/VerifyPayment.aspx';
     protected $refundUrl = 'https://pep.shaparak.ir/doRefund.aspx';
+    protected $isValid = 'https://185.60.32.41:16008/services/libsrv/verifyThirdV2';
 
     public function __construct($merchantCode, $terminalCode, $certificate)
     {
@@ -82,6 +83,7 @@ class PepGateway
     }
 
     /**
+     * @param $TransactionReferenceID
      * @param $invoiceNumber
      * @param $invoiceDate
      * @return array
@@ -91,6 +93,26 @@ class PepGateway
     {
         $fields = ['TransactionReferenceID' => $TransactionReferenceID, 'invoiceNumber' => $invoiceNumber, 'invoiceDate' => $invoiceDate, 'merchantCode' => $this->merchantCode, 'terminalCode' => $this->terminalCode];
         $result = Parser::post2https($fields, $this->checkURL);
+        return Parser::makeXMLTree($result);
+    }
+
+    public function mpgIsValid($mobileNumber, $invoiceNumber, $invoiceDate, $amount, $referenceNumber, $transactionDate, $timestamp)
+    {
+        $sign = base64_encode($this->sign($invoiceNumber, $invoiceDate, $amount, null, $timestamp, null));
+        $fields = [
+            'userMobile' => $mobileNumber,
+            'MerchantCode' => $this->merchantCode,
+            'TerminalCode' => $this->terminalCode,
+            'InvoiceNumber' => $invoiceNumber,
+            'InvoiceDate' => $invoiceDate,
+            'Amount' => $amount,
+            'ReferenceNumber' => $referenceNumber,
+            'transactionDate' => $transactionDate,
+            'TimeStamp' => $timestamp,
+            'sign' => $sign
+        ];
+
+        $result = Parser::post2https($fields, $this->isValid);
         return Parser::makeXMLTree($result);
     }
 

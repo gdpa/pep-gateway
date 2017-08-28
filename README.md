@@ -64,3 +64,4 @@ class payment
     * result (true or false)
     * resultMessage
 
+MPG 'isValid' function also added. (See Their MPG documents.). 
