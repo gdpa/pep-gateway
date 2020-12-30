@@ -12,7 +12,10 @@
     "require": {
         "php": ">=5.5",
         "ext-soap": "*",
-        "ext-bcmath": "*"
+        "ext-bcmath": "*",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "6.3.*"

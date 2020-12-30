@@ -125,7 +125,7 @@ class PepGateway
      * @param $action
      * @return string
      */
-    protected function sign($invoiceNumber, $invoiceDate, $amount, $redirectAddress = null, $timestamp , $action = null)
+    protected function sign($invoiceNumber, $invoiceDate, $amount, $redirectAddress = null, $timestamp = null, $action = null)
     {
         $redirectAddress = $redirectAddress ? '#' . $redirectAddress : '';
         $action = $action ? '#' . $action : '';

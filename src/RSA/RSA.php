@@ -9,8 +9,7 @@ class RSA
         $padded = RSA::add_PKCS1_padding($message, true, $keylength / 8);
         $number = RSA::binary_to_number($padded);
         $encrypted = RSA::pow_mod($number, $public_key, $modulus);
-        $result = RSA::number_to_binary($encrypted, $keylength / 8);
-        return $result;
+        return RSA::number_to_binary($encrypted, $keylength / 8);
     }
 
     public static function rsa_decrypt($message, $private_key, $modulus, $keylength)
@@ -26,8 +25,7 @@ class RSA
         $padded = RSA::add_PKCS1_padding($message, false, $keylength / 8);
         $number = RSA::binary_to_number($padded);
         $signed = RSA::pow_mod($number, $private_key, $modulus);
-        $result = RSA::number_to_binary($signed, $keylength / 8);
-        return $result;
+        return RSA::number_to_binary($signed, $keylength / 8);
     }
 
     public static function rsa_verify($message, $public_key, $modulus, $keylength)
